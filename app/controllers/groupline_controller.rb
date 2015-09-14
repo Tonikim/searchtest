@@ -63,5 +63,19 @@ class GrouplineController < ApplicationController
     post.save
     redirect_to :back
   end
-  
+  #추가
+   # def search
+    #  @search = Group.search(:include => [:group_content]) do
+    #    keywords(params[:search])
+    #  end
+   # end
+    
+    def index
+      
+      @search = Group.search do
+        fulltext params[:search]
+      end
+      #@result = @searchh
+      @result = @search.results
+    end
 end
